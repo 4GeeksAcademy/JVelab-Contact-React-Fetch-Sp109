@@ -15,12 +15,17 @@ const ContactList = () => {
                     return fetch("https://playground.4geeks.com/contact/agendas/jose", {
                         method: "POST"
                     })
-                }
+                    .then(() => {
+                    // Vuelve a hacer GET después de crearla
+                    fetch("https://playground.4geeks.com/contact/agendas/jose/contacts")
+                })
+            }
                 else {
-                    return res.json()
+                    return res
                 }
             }
         )
+        .then(res => res.json())
         .then(data => 
              dispatch({ type: "get_contacts", payload: data.contacts })
         )

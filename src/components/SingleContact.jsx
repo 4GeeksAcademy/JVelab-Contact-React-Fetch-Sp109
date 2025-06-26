@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer";
+import Modal from "./Modal"
 
 const SimpleContact = (props) => {
 
     const { getAgenda } = props
     const { name, phone, email, address, id } = props.contact
+    const [modalDelete, setModalDelete] = useState({
+        isOpen: false,
+        contact: {}
+    })
 
     const deleteContact = (contactId) => {
         console.log("delete")
@@ -38,8 +43,18 @@ const SimpleContact = (props) => {
             </div>
             <div className="col-2 d-flex justify-content-center gap-4">
                 <a href={`/single/${id}`}><button className="h-25"><i className="fa-solid fa-pencil"></i></button></a>
-                <button className="h-25"><i className="fa-solid fa-trash" onClick={() => deleteContact(id)}></i></button>
+                <button className="h-25"><i className="fa-solid fa-trash" onClick={() => setModalDelete({...modalDelete, isOpen: true})}></i></button>
             </div>
+
+            <Modal isOpen={modalDelete.isOpen} onClose={() => setModalDelete({...modalDelete, isOpen: false})}>
+                <div className="container text-center">
+                    <h3>¿Seguro que quieres eliminar el contacto de {name}</h3>
+                    <div className="w-100 d-flex justify-content-around mt-5">
+                        <button className="btn btn-danger w-25" onClick={() => deleteContact(id)}>Eliminar</button>
+                        <button className="btn btn-secondary w-25" onClick={() => setModalDelete({...modalDelete, isOpen: false})}>Cancelar</button>
+                    </div>
+                </div>
+            </Modal>
 
         </div>
     )
