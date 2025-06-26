@@ -43,7 +43,7 @@ export const Demo = () => {
         <input className="w-100 my-2" type="phone" id="phone" placeholder="Introduce el teléfono" value={contact.phone} onChange={e => {setContact({...contact, "phone" : e.target.value})}}/>
         <label htmlFor="name">Dirección</label>
         <input className="w-100 my-2" type="text" id="address" placeholder="introduce la dirección" value={contact.address} onChange={e => {setContact({...contact, "address" : e.target.value})}}/>
-        <button className="btn btn-primary w-50 my-2" onClick={addContact}>Guardar</button>
+        <button className="btn btn-primary w-100 my-2" onClick={addContact}>Guardar</button>
         <a href="/"><span>Volver a la lista de contactos.</span></a>
     </div>
   );

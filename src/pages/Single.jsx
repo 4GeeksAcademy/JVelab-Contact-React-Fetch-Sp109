@@ -79,8 +79,8 @@ export const Single = props => {
         <input className="w-100 my-2" type="phone" id="phone" placeholder="Introduce el teléfono" value={phone} onChange={e => {setContact({...contact, "phone" : e.target.value})}}/>
         <label htmlFor="name">Dirección</label>
         <input className="w-100 my-2" type="text" id="address" placeholder="introduce la dirección" value={address} onChange={e => {setContact({...contact, "address" : e.target.value})}}/>
-        <div className="row d-flex justify-content-center">
-          <button className="btn btn-primary w-50 my-2" onClick={updateContact}>Guardar</button>
+        <div className="row d-flex justify-content-center px-2">
+          <button className="btn btn-primary w-100 my-2" onClick={updateContact}>Guardar</button>
           </div>
         <a href="/"><span className="w-100">Volver a la lista de contactos.</span></a>
     </div>
